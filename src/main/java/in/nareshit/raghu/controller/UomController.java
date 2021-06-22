@@ -22,6 +22,10 @@ public class UomController {
 	@Autowired
 	IUomService service;
 	
+	public void commonFetchAll(Model model) {
+		List<Uom> uom = service.getAllUom();
+		model.addAttribute("list",uom);
+	}
 	@GetMapping("/register")
 	public String showUomRegister() {
 		return "UomRegister";
@@ -37,8 +41,9 @@ public class UomController {
 	
 	@GetMapping("/all")
 	public String getAllUom(Model model){
-		List<Uom> list = service.getAllUom();
-		model.addAttribute("list", list);
+//		List<Uom> list = service.getAllUom();
+//		model.addAttribute("list", list);
+		commonFetchAll(model);
 		return "UomData";
 	}
 	

@@ -54,7 +54,7 @@ public class OrderMethodServiceImpl implements IOrderMethodService {
 
 	@Override
 	public Integer updateOrderMethod(OrderMethod orderMethod) {
-		orderMethod = repo.save(orderMethod);
+		repo.save(orderMethod);
 //		Integer id = om.getId();
 		return orderMethod.getId();
 	}

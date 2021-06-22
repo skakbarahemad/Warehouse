@@ -27,7 +27,8 @@ public class ShipmentTypeController  {
 		private IShipmentTypeService service;
 		
 		public void commonFetchAll(Model model) {
-//			List<ShipmentType> st = 
+			List<ShipmentType> st = service.getAllShipmentTypes();
+			model.addAttribute("list", st);
 		}
 		@GetMapping("/register")
 		public String showRegister() {
@@ -48,8 +49,9 @@ public class ShipmentTypeController  {
 		
 		@GetMapping("/all")
 		public String fetchShipmentType(Model model) {
-			List<ShipmentType> list = service.getAllShipmentTypes();
-			model.addAttribute("list", list);
+//			List<ShipmentType> list = service.getAllShipmentTypes();
+//			model.addAttribute("list", list);
+			commonFetchAll(model);
 			return "ShipmentTypeData";
 			
 		}
@@ -58,9 +60,10 @@ public class ShipmentTypeController  {
 		public String deleteShipmentType(@RequestParam Integer id, Model model) {
 			service.deleteShipmentType(id);
 			String msg = "Shipment Type '"+id+"'Deleted !";
-			List<ShipmentType> list=service.getAllShipmentTypes();
+//			List<ShipmentType> list=service.getAllShipmentTypes();
+			commonFetchAll(model);
 			model.addAttribute("message", msg);
-			model.addAttribute("list", list);
+//			model.addAttribute("list", list);
 		
 			return "ShipmentTypeData";
 		}
@@ -77,8 +80,9 @@ public class ShipmentTypeController  {
 				e.printStackTrace();
 				page = "ShipmentTypeData";
 				model.addAttribute("message", e.getMessage());
-				List<ShipmentType> list = service.getAllShipmentTypes();
-				model.addAttribute("list", list);
+				commonFetchAll(model);
+//				List<ShipmentType> list = service.getAllShipmentTypes();
+//				model.addAttribute("list", list);
 				
 			}
 			return page;
