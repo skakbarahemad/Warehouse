@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/fontawesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="footer-card bg-info text-center text-white">
+				<h1>UOM Data Page</h1>
+			</div>
+			<br>
+			<div class="body-card">
+				<table class="table table-hover">
+					<tr class="bg-primary text-white">
+						<th>ID</th>
+						<th>Uom Type</th>
+						<th>Uom Model</th>
+						<th>Uom Desc</th>
+						<th>Operation</th>
+					</tr>
+					<tr th:each="ob:${list}">
+						<td th:text="${ob.uomId}"></td>
+						<td th:text="${ob.uomType}"></td>
+						<td th:text="${ob.uomModel}"></td>
+						<td th:text="${ob.uomDesc}"></td>
+						<td>
+							<a class="btn btn-danger" th:href="@{/uom/delete(id=${ob.uomId})}">DELETE<i class="fa fa-trash-o" aria-hidden="true"></i></a>   |
+							<a th:href="@{/uom/edit(id=${ob.uomId})}" class="btn btn-warning">EDIT</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="footer-card text-center" th:if="${message!=null}">
+				<span class="text-success text-center text-bold" th:text="${message}"></span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

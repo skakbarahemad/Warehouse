@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header text-center bg-primary text-warning">
+                <h1><b>Order Method Data Page</b></h1>
+            </div>
+            <!-- card header end -->
+            <div class="card-body">
+                <table class="table-hover table">
+                    <tr class="bg-warning">
+                        <th>ID</th>
+                        <th>Mode</th>
+                        <th>Code</th>
+                        <th>Type</th>
+                        <th>Accept</th>
+                        <th>Description</th>
+                        <th>Operations</th>
+                    </tr>
+                    <tr th:each="ob:${list}">
+                        <td th:text="${ob.id}"></td>
+                        <td th:text="${ob.orderMode}"></td>
+                        <td th:text="${ob.orderCode}"></td>
+                        <td th:text="${ob.orderType}"></td>
+                        <td th:text="${ob.orderAcpt}"></td>
+                        <td th:text="${ob.orderDesc}"></td>
+                        <td>
+                            <a th:href="@{/om/delete/(id=${ob.id})}" class="btn btn-danger">DELETE <i class="fa fa-trash" aria-hidden="true"></i></a>
+                            |
+                            <a th:href="@{/om/edit/(id=${ob.id})}" class="btn btn-info">EDIT <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- card body end -->
+            <div class="card-footer bg-primary text-center text-warning" th:if="${message!=null}">
+				<span class="text-warning" th:text="${message}"></span>
+			</div>
+            <!-- card footer end -->
+        </div>
+    </div>
+</body>
+
+</html>

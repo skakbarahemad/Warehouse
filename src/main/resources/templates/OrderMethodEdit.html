@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+<style type="text/css">
+label {
+	font-weight: bold;
+	margin-left: 90px;
+	text-indent: 2px;
+	margin-top: 9px;
+	margin-bottom: 2px;
+	font-family: Lucida Sans;
+	font-size: 90%;
+}
+
+span {
+	color: red;
+	font-weight: 500;
+}
+</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-primary text-center text-warning">
+				<h1>
+					<b>Order Method Edit Page</b>
+				</h1>
+			</div>
+			<!-- card header end -->
+			<div class="card-body">
+				<form id="orderMethodForm" th:action="@{/om/update}" th:object="${OrderMethod}" method="POST">
+
+					<div class="row">
+						<div class="col-3">
+							<label>Id</label>
+						</div>
+						<div class="col-4">
+							<input type="text" name="id" id="id" th:field="*{id}"
+								class="form-control" readonly />
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-3">
+							<label style="margin-top: 2px;">Order Mode</label>
+						</div>
+						<div class="col-4" style="margin-bottom: 5px;">
+							<input th:field="*{orderMode}" type="radio" name="orderMode"
+								id="orderMode1" style="margin-right: 5px;" value="Sale">Sale
+							<input th:field="*{orderMode}" type="radio" value="Purchase"
+								name="orderMode" id="orderMode2"
+								style="margin-right: 5px; margin-left: 10px;">Purchase
+						</div>
+						<div class="col-5">
+							<span id="orderModeError"></span>
+						</div>
+					</div>
+
+					<!-- row 2 -->
+					<div class="row">
+						<div class="col-3">
+							<label>Order Code</label>
+						</div>
+						<div class="col-4">
+							<input th:field="*{orderCode}" type="text" name="orderCode"
+								id="orderCode" class="form-control" style="margin-bottom: 5px;">
+						</div>
+						<div class="col-5">
+							<span id="orderCodeError"></span>
+						</div>
+					</div>
+
+					<!-- row 3 -->
+					<div class="row">
+						<div class="col-3">
+							<label>Order Type</label>
+						</div>
+						<div class="col-4">
+							<select th:field="*{orderType}" name="orderType" id="orderType"
+								class="form-control" style="margin-bottom: 5px;">
+								<option value="">--SELECT--</option>
+								<option value="FIFO">FIFO</option>
+								<option value="LIFO">LIFO</option>
+								<option value="FCFO">FCFO</option>
+								<option value="FEFO">FEFO</option>
+							</select>
+						</div>
+						<div class="col-5">
+							<span id="orderTypeError"></span>
+						</div>
+					</div>
+
+					<!-- row 4 -->
+					<div class="row">
+						<div class="col-3">
+							<label>Order Accept</label>
+						</div>
+						<div class="col-4" style="margin-top: 8px; margin-bottom: 5px;">
+							<input th:field="*{orderAcpt}" name="orderAcpt" id="orderAcpt1"
+								type="checkbox" value="Multi-Model" style="margin-right: 5px;">MultiModel
+							<input th:field="*{orderAcpt}" name="orderAcpt" id="orderAcpt2"
+								type="checkbox" value="Accept Return"
+								style="margin-left: 10px; margin-right: 5px;">AcceptReturn
+						</div>
+						<div class="col-5">
+							<span id="orderAcptError"></span>
+						</div>
+					</div>
+
+					<!-- row 5 -->
+					<div class="row">
+						<div class="col-3">
+							<label>Description</label>
+						</div>
+						<div class="col-4">
+							<textarea th:field="*{orderDesc}" name="orderDesc" id="orderDesc"
+								class="form-control"></textarea>
+						</div>
+						<div class="col-5">
+							<span id="orderDescError"></span>
+						</div>
+					</div>
+
+					<!-- row 6 -->
+					<div class="row">
+						<div class="col-3"></div>
+						<div class="col-4">
+							<button type="submit" class="btn btn-success"
+								style="margin-top: 25px;">
+								Update <i class="fa fa-floppy-o" aria-hidden="true"></i>
+							</button>  
+						<!-- <input type="submit" value="Update" class="btn btn-success"/> -->	
+						</div>
+					</div>
+				</form>
+				<!-- form end -->
+			</div>
+			<!-- card body end -->
+			<div class="card-footer bg-primary text-center text-warning"
+				th:if="${message!=null}">
+				<span class="text-warning" th:text="${message}"></span>
+			</div>
+			<!-- card footer end -->
+		</div>
+		<!-- card end -->
+	</div>
+	<!-- container end -->
+	<script type="text/javascript" th:src="@{/JSFiles/OrderMethod.js}"></script>
+</body>
+<!-- body end -->
+
+</html>

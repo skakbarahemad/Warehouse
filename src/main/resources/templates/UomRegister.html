@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="header-card bg-info text-center text-white">
+				<h1>UOM Type Register Page</h1>
+			</div>
+			<br>
+			<!-- card header end -->
+			<div class="body-card">
+				<form id="uomTypeRegister" th:action="@{/uom/save}" method="post">
+					<div class="row">
+						<div class="col-3 text-center">
+							<label>Uom Type</label>
+						</div>
+						<div class="col-4">
+							<select name="uomType" id="uomType" class="form-control">
+								<option value="">--SELECT--</option>
+								<option value="PACKING">PACKING</option>
+								<option value="NO PACKING">NO PACKING</option>
+								<option value="NA">NA</option>
+							</select>
+						</div>
+						<div class="col-5">
+							<span id="uomTypeError"></span>
+						</div>
+					</div>
+					<br>
+					<!-- Row#1 end -->
+
+					<div class="row">
+						<div class="col-3 text-center">
+							<label>Uom Model</label>
+
+						</div>
+						<div class="col-4">
+							<input type="text" name="uomModel" id="uomModel" class="form-control">
+						</div>
+						<div class="col-5">
+							<span id="uomModelError"></span>
+						</div>
+					</div>
+					<br>
+					<!-- Row#3 -->
+					<div class="row">
+						<div class="col-3 text-center">
+							<label>Description</label>
+						</div>
+						<div class="col-4">
+							<textarea name="uomDesc" id="uomDesc" class="form-control"></textarea>
+						</div>
+						<div class="col-5">
+							<span id="uomDescError"></span>
+						</div>
+					</div>
+					<br>
+
+					<div class="row">
+						<div class="col-3"></div>
+						<div class="col-4">
+							<input type="submit" class="btn btn-success" value="Create Uom">
+						</div>
+					</div>
+				</form>
+			</div>
+			<!--card body end  -->
+			<div class="footer-card text-success text-center text-bold" th:if="${message!=null}">
+				<span th:text="${message}"></span>
+			</div>
+			<!-- card footer end -->
+		</div>
+	</div>
+	
+	
+	<script type="text/javascript" th:src="@{/JSFiles/UomType.js}">
+	
+	</script>
+
+</body>
+</html>

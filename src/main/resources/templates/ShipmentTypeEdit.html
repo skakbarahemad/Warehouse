@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header bg-info text-center text-white">
+                <h1>Shipment Type Edit Page</h1>
+            </div>
+            <!-- card header end -->
+
+            <div class="card-body">
+                <form id="ShipmentTypeRegister" th:action="@{/st/update}" method="POST" th:object="${ShipmentType}">
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Shipment ID</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" th:field="*{id}" class="form-control" readonly>
+                        </div>
+                        <div class="col-5">
+                            <span id=""></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Shipment Mode</label>
+                        </div>
+                        <div class="col-4">
+                            <select id="shipMode" th:field="*{shipMode}" class="form-control">
+                                <option value="">--SELECT--</option>
+                                <option value="AIR">AIR</option>
+                                <option value="TRUCK">TRUCK</option>
+                                <option value="TRAIN">TRAIN</option>
+                                <option value="SHIP">SHIP</option>
+                            </select>
+                        </div>
+                        <div class="col-5">
+                            <span id="shipModeError"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Shipment Code</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" id="shipCode" th:field="*{shipCode}" class="form-control">
+                        </div>
+                        <div class="col-5">
+                            <span id="shipCodeError"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Enable Shipment</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="radio" name="enableShip" th:field="*{enableShip}" value="YES" />YES
+                            <input type="radio" name="enableShip" th:field="*{enableShip}" value="NO" />No
+                        </div>
+                        <div class="col-5">
+                            <span id="enableShipError"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Shipment Grade</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="radio" name="shipGrade" th:field="*{shipGrade}" value="A" />A
+                            <input type="radio" name="shipGrade" th:field="*{shipGrade}" value="B" />B
+                            <input type="radio" name="shipGrade" th:field="*{shipGrade}" value="C" />C
+                        </div>
+                        <div class="col-5">
+                            <span id="shipGradeError"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Description</label>
+                        </div>
+                        <div class="col-4">
+                            <textarea id="shipDesc" th:field="*{shipDesc}" class="form-control"></textarea>
+                        </div>
+                        <div class="col-5">
+                            <span id="shipDescError"></span>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-4">
+                            <input type="submit" value="Update" class="btn btn-success">
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+            <!-- card body end -->
+
+            <div class="card-footer bg-info text-center" th:if="${message!=null}">
+                <span class="text-success text-center" th:text="${message}"></span>
+
+            </div>
+            <!-- card footer end -->
+
+        </div>
+        <!-- card end -->
+    </div>
+    <!-- container end -->
+   
+
+    <script type="text/javascript" th:src="@{/JSFiles/ShipmentType.js}"></script>
+       
+</body>
+
+</html>
